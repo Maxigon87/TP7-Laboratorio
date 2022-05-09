@@ -212,21 +212,19 @@ public class FormularioDeMaterias extends javax.swing.JInternalFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "El dato no es numerico, vuelva a ingresarlo");
-            fmAnio.setText(" ");
-            fmID.setText(" ");
-            fmMateria.setText(" ");
+            
             fmAnio.requestFocus();
+        } finally {
+            Materia mat = new Materia(id, nombre, anio);
+            boolean exito = materias.contains(mat);
+            if (!exito) {
+                materias.add(mat);
+                JOptionPane.showMessageDialog(this, "Materia agregada");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Esta materia ya existe");
+            }
         }
-        Materia mat = new Materia(id, nombre, anio);
-        boolean exito = materias.contains(mat);
-        if (!exito) {
-            materias.add(mat);
-            JOptionPane.showMessageDialog(this, "Materia agregada");
-            limpiar();
-        } else {
-            JOptionPane.showMessageDialog(this, "Esta materia ya existe");
-        }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
